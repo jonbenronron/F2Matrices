@@ -64,7 +64,7 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   
 
 ## State
-- [x] `F2Polynomial`
+- [x] `F2Matrix`
   - [x] `__init__`
   - [x] `__str__`
   - [x] `__add__`
