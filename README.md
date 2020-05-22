@@ -51,15 +51,29 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   c = f2p.F2Polynomial([1, 1, 1, 1])
   d = f2p.F2Polynomial([1, 0, 1, 1])
 
-  print(str(F2Matrix([[a, b],
-                      [c, d]])))
+  f = F2Matrix([[a, b],
+                [c, d]])
+  g = F2Matrix([[d, c],
+                [b, a]])
+
+  h = f + g
+
+  print(str(f), " + \n")
+  print(str(g), " = \n")
+  print(str(h), "\n")
   ```
   
   will print out:
   
   ```
   |      1 + D + D^2,                 D|
-  |1 + D + D^2 + D^3,     1 + D^2 + D^3|
+  |1 + D + D^2 + D^3,     1 + D^2 + D^3|  +
+
+  |    1 + D^2 + D^3, 1 + D + D^2 + D^3|
+  |                D,       1 + D + D^2|  =
+
+  |      D + D^3, 1 + D^2 + D^3|
+  |1 + D^2 + D^3,       D + D^3|
   ```
   
 
