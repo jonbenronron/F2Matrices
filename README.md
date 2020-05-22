@@ -82,6 +82,5 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   - [x] `__init__`
   - [x] `__str__`
   - [x] `__add__`
-  - [ ] `__sub__`
   - [ ] `__mul__`
   - [ ] `__pow__`
