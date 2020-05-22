@@ -9,8 +9,7 @@ Matrices for [polynomials](https://numpy.org/devdocs/reference/routines.polynomi
 ### Files
 
 ```
-f2matrices.py   # Imports F2Polynomial class and functions from f2polynomials.py file
-f2polynomials.py
+f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py file
 ```
 
 ### Class F2Matrix
@@ -45,6 +44,8 @@ f2polynomials.py
   #### Example:
   
   ```
+  import f2polynomial as f2p
+  
   a = f2p.F2Polynomial([1, 1, 1, 0])
   b = f2p.F2Polynomial([0, 1, 0, 0])
   c = f2p.F2Polynomial([1, 1, 1, 1])
