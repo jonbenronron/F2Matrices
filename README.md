@@ -43,6 +43,8 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   
   #### Example:
   
+  __Example.1__
+  
   ```
   import f2polynomial as f2p
   
@@ -74,6 +76,38 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
 
   |      D + D^3, 1 + D^2 + D^3|
   |1 + D^2 + D^3,       D + D^3|
+  ```
+  __Example.2__
+  
+  ```
+  a = f2p.F2Polynomial([1, 0, 0, 0])
+  b = f2p.F2Polynomial([1, 1, 0, 0])
+  c = f2p.F2Polynomial([1, 1, 1, 0])
+  d = f2p.F2Polynomial([1, 1, 1, 1])
+
+  f = F2Matrix([[a, b],
+                [c, d]])
+
+  g = F2Matrix([[d, c],
+               [b, a]])
+
+  h = f * g
+
+  print(str(f), " * \n")
+  print(str(g), " = \n")
+  print(str(h), "\n")
+  ```
+  will print out:
+  
+  ```
+  |                1,             1 + D|
+  |      1 + D + D^2, 1 + D + D^2 + D^3|  *
+
+  |1 + D + D^2 + D^3,       1 + D + D^2|
+  |            1 + D,                 1|  =
+
+  |              D + D^3,                   D^2|
+  |D^2 + D^3 + D^4 + D^5,         D + D^3 + D^4|
   ```
   
 
