@@ -117,21 +117,3 @@ class F2Matrix:
             raise TypeError(
                 "Row and column dimensions of matrices don't match!")
             return F2Matrix([[f2p.F2Polynomial([0])]])
-
-
-a = f2p.F2Polynomial([1, 0, 0, 0])
-b = f2p.F2Polynomial([1, 1, 0, 0])
-c = f2p.F2Polynomial([1, 1, 1, 0])
-d = f2p.F2Polynomial([1, 1, 1, 1])
-
-f = F2Matrix([[a, b],
-              [c, d]])
-
-g = F2Matrix([[d, c],
-              [b, a]])
-
-h = f * g
-
-print(str(f), " * \n")
-print(str(g), " = \n")
-print(str(h), "\n")
