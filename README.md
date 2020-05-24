@@ -47,10 +47,28 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   return self + other
   ```
   
+  _Addition operator_ `+=`:
+  ```
+  __iadd__(self, other):
+  return self + other
+  ```
+  
   _Multiplication operator_ `*`:
   ```
   __mul__(self, other):
   return self * other
+  ```
+  
+  _Multiplication operator_ `*=`:
+  ```
+  __imul__(self, other):
+  return self * other
+  ```
+  
+  _Power operator_ `**`:
+  ```
+  __pow__(self, power):
+  return self ** power
   ```
  
  ### Functions:
@@ -129,11 +147,41 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
  |              D + D^3,                   D^2|
  |D^2 + D^3 + D^4 + D^5,         D + D^3 + D^4|
  ``` 
+  
+  _Example 3_
+  
+ ```
+ a = f2p.F2Polynomial([1, 0, 0, 0])
+ b = f2p.F2Polynomial([1, 1, 0, 0])
+ c = f2p.F2Polynomial([1, 1, 1, 0])
+ d = f2p.F2Polynomial([1, 1, 1, 1])
 
+ f = F2Matrix([[a, b],
+               [c, d]])
+
+ h = f ** 2
+
+ print(str(f), " ** 2 = \n")
+ print(str(h), "\n")
+ ```
+ 
+ will print out:
+ 
+ ```
+ |                1,             1 + D|
+ |      1 + D + D^2, 1 + D + D^2 + D^3|  ** 2 =
+
+ |                  D^3,               D + D^4|
+ |        D + D^3 + D^5, D^2 + D^3 + D^4 + D^6|
+ ```
 ## State
+- [x] `dotProduct`
 - [x] `F2Matrix`
   - [x] `__init__`
   - [x] `__str__`
   - [x] `__add__`
+  - [x] `__iadd__`
+  - [x] `transpose`
   - [x] `__mul__`
-  - [ ] `__pow__`
+  - [x] `__imul__`
+  - [x] `__pow__`
