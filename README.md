@@ -26,7 +26,7 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   _Initialization_:
   ```
   __init__(self, coef):
-  return F2Polynomial
+  return F2Matrix
   ```
   
   _String format_:
@@ -35,52 +35,105 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   return String
   ```
   
+  _Transpose matrix_:
+  ```
+  transpose(self):
+  return F2Matrix   # This will be a transpose version of 'self'
+  ```
+  
   _Addition operator_ `+`:
   ```
   __add__(self, other):
   return self + other
   ```
   
-  #### Example:
-  
+  _Multiplication operator_ `*`:
   ```
-  import f2polynomial as f2p
-  
-  a = f2p.F2Polynomial([1, 1, 1, 0])
-  b = f2p.F2Polynomial([0, 1, 0, 0])
-  c = f2p.F2Polynomial([1, 1, 1, 1])
-  d = f2p.F2Polynomial([1, 0, 1, 1])
-
-  f = F2Matrix([[a, b],
-                [c, d]])
-  g = F2Matrix([[d, c],
-                [b, a]])
-
-  h = f + g
-
-  print(str(f), " + \n")
-  print(str(g), " = \n")
-  print(str(h), "\n")
+  __mul__(self, other):
+  return self * other
   ```
+ 
+ ### Functions:
+ 
+ _Dot product of given vectors_:
+ ```
+ dotProduct(v, u):
+ return F2Polynomial
+ ```
+ 
+ ### Example:
   
-  will print out:
+ _Example 1_
   
-  ```
-  |      1 + D + D^2,                 D|
-  |1 + D + D^2 + D^3,     1 + D^2 + D^3|  +
+ ```
+ import f2polynomial as f2p
+  
+ a = f2p.F2Polynomial([1, 1, 1, 0])
+ b = f2p.F2Polynomial([0, 1, 0, 0])
+ c = f2p.F2Polynomial([1, 1, 1, 1])
+ d = f2p.F2Polynomial([1, 0, 1, 1])
 
-  |    1 + D^2 + D^3, 1 + D + D^2 + D^3|
-  |                D,       1 + D + D^2|  =
+ f = F2Matrix([[a, b],
+               [c, d]])
+ g = F2Matrix([[d, c],
+               [b, a]])
 
-  |      D + D^3, 1 + D^2 + D^3|
-  |1 + D^2 + D^3,       D + D^3|
-  ```
+ h = f + g
+
+ print(str(f), " + \n")
+ print(str(g), " = \n")
+ print(str(h), "\n")
+ ```
   
+ will print out:
+  
+ ```
+ |      1 + D + D^2,                 D|
+ |1 + D + D^2 + D^3,     1 + D^2 + D^3|  +
+
+ |    1 + D^2 + D^3, 1 + D + D^2 + D^3|
+ |                D,       1 + D + D^2|  =
+
+ |      D + D^3, 1 + D^2 + D^3|
+ |1 + D^2 + D^3,       D + D^3|
+ ```
+ _Example 2_
+  
+ ```
+ a = f2p.F2Polynomial([1, 0, 0, 0])
+ b = f2p.F2Polynomial([1, 1, 0, 0])
+ c = f2p.F2Polynomial([1, 1, 1, 0])
+ d = f2p.F2Polynomial([1, 1, 1, 1])
+
+ f = F2Matrix([[a, b],
+               [c, d]])
+
+ g = F2Matrix([[d, c],
+               [b, a]])
+
+ h = f * g
+
+ print(str(f), " * \n")
+ print(str(g), " = \n")
+ print(str(h), "\n")
+ ```
+ will print out:
+  
+ ```
+ |                1,             1 + D|
+ |      1 + D + D^2, 1 + D + D^2 + D^3|  *
+
+ |1 + D + D^2 + D^3,       1 + D + D^2|
+ |            1 + D,                 1|  =
+
+ |              D + D^3,                   D^2|
+ |D^2 + D^3 + D^4 + D^5,         D + D^3 + D^4|
+ ``` 
 
 ## State
 - [x] `F2Matrix`
   - [x] `__init__`
   - [x] `__str__`
   - [x] `__add__`
-  - [ ] `__mul__`
+  - [x] `__mul__`
   - [ ] `__pow__`
