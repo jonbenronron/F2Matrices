@@ -77,7 +77,7 @@ class F2Matrix:
         return s
 
     """
-    Method for addition operation
+    Methods for addition operation
     """
 
     def __add__(self, other):
@@ -94,6 +94,9 @@ class F2Matrix:
             raise TypeError("Matrices have different size!")
             return F2Matrix([[f2p.F2Polynomial([0])]])
 
+    def __iadd__(self, other):
+        return self + other
+
     """
     Method for matrix transpose
     """
@@ -104,7 +107,7 @@ class F2Matrix:
         return F2Matrix(newMatrix)
 
     """
-    Method for multiplication operation
+    Methods for multiplication operation
     """
 
     def __mul__(self, other):
@@ -117,3 +120,16 @@ class F2Matrix:
             raise TypeError(
                 "Row and column dimensions of matrices don't match!")
             return F2Matrix([[f2p.F2Polynomial([0])]])
+
+    def __imul__(self, other):
+        return self * other
+
+    """
+    Method for power operation
+    """
+
+    def __pow__(self, power):
+        result = self
+        for i in range(power - 1):
+            result *= self
+        return result
