@@ -10,6 +10,7 @@ Matrices for [polynomials](https://github.com/jonbenronron/F2Polynomials) over f
 
 ```
 f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py file
+f2polynomial.py
 ```
 
 ### Class F2Matrix
