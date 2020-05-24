@@ -1,4 +1,31 @@
+import sys
 import f2polynomial as f2p
+
+"""
+Function for dot product of two given vectors
+"""
+
+
+def dotProduct(v, u):
+    if len(v) == len(u):
+        try:
+            newVector = []
+            for index, polynom in enumerate(v):
+                newVector.append(f2p.polyMul(polynom, u[index]))
+        except:
+            print("Unexpected error:", sys.exc_info()[0])
+        length = 0
+        for p in newVector:
+            length = len(p.coef) if length < len(p.coef) else length
+        sumOfProductValues = f2p.F2Polynomial([0] * (length))
+        for productPolynom in newVector:
+            sumOfProductValues = f2p.polyAdd(
+                sumOfProductValues, productPolynom)
+        return sumOfProductValues
+    else:
+        raise TypeError("Vectors have different dimensions!")
+        return f2p.F2Polynomial([0])
+
 
 """
 Class for matrices with elements from polynomial ring over field Z/2Z
@@ -66,3 +93,45 @@ class F2Matrix:
         else:
             raise TypeError("Matrices have different size!")
             return F2Matrix([[f2p.F2Polynomial([0])]])
+
+    """
+    Method for matrix transpose
+    """
+
+    def transpose(self):
+        newMatrix = [[self.rows[j][i]
+                      for j in range(len(self.rows))] for i in range(len(self.rows[0]))]
+        return F2Matrix(newMatrix)
+
+    """
+    Method for multiplication operation
+    """
+
+    def __mul__(self, other):
+
+        if len(self.rows[0]) == len(other.rows):
+            newMatrix = F2Matrix(
+                [[dotProduct(row, column) for column in other.transpose().rows] for row in self.rows])
+            return F2Matrix([[dotProduct(row, column) for column in other.transpose().rows] for row in self.rows])
+        else:
+            raise TypeError(
+                "Row and column dimensions of matrices don't match!")
+            return F2Matrix([[f2p.F2Polynomial([0])]])
+
+
+a = f2p.F2Polynomial([1, 0, 0, 0])
+b = f2p.F2Polynomial([1, 1, 0, 0])
+c = f2p.F2Polynomial([1, 1, 1, 0])
+d = f2p.F2Polynomial([1, 1, 1, 1])
+
+f = F2Matrix([[a, b],
+              [c, d]])
+
+g = F2Matrix([[d, c],
+              [b, a]])
+
+h = f * g
+
+print(str(f), " * \n")
+print(str(g), " = \n")
+print(str(h), "\n")

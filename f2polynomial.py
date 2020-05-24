@@ -8,7 +8,7 @@ Function for adding two given polynomials
 
 def polyAdd(p1, p2):
     newCoef = [int(p1.coef[i]) + int(p2.coef[i])
-               for i in range(max(p1.degree(), p2.degree()))]
+               for i in range(max(len(p1.coef), len(p2.coef)))]
 
     return F2Polynomial(newCoef)
 
@@ -77,6 +77,8 @@ class F2Polynomial(Polynomial):
                     nonZeroList.append("D^" + str(index))
 
         s = " + ".join(nonZeroList)
+        if len(s) == 0:
+            s = "0"
         return s
 
     """
