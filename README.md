@@ -41,6 +41,12 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   return self + other
   ```
   
+  _Addition operator_ `*`:
+  ```
+  __mul__(self, other):
+  return self * other
+  ```
+  
   #### Example:
   
   _Example 1_
@@ -89,7 +95,7 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
                 [c, d]])
 
   g = F2Matrix([[d, c],
-               [b, a]])
+                [b, a]])
 
   h = f * g
 
@@ -116,5 +122,5 @@ f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py 
   - [x] `__init__`
   - [x] `__str__`
   - [x] `__add__`
-  - [ ] `__mul__`
+  - [x] `__mul__`
   - [ ] `__pow__`
