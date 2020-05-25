@@ -33,7 +33,7 @@ f2polynomial.py
   
   _Initialization_:
   ```
-  __init__(self, coef):
+  __init__(self, rows):
   return F2Matrix
   ```
   
