@@ -2,85 +2,10 @@
 
 ## Description
 
-Matrices for [polynomials](https://github.com/jonbenronron/F2Polynomials) over field [Z/2Z](https://en.wikipedia.org/wiki/GF(2)).
-
-## Documentation
-
-### Files
-
-```
-f2matrices.py   # Imports F2Polynomial class and functions from f2polynomial.py file
-f2polynomial.py
-```
-
-### Class F2Matrix
-  
-  #### Parameters:
-  
-  ```
-  self
-  rows=[[F2Polynomial([0])]]
-  ```
-  
-  #### Methods:
-  
-  _Initialization_:
-  ```
-  __init__(self, rows):
-  return F2Matrix
-  ```
-  
-  _String format_:
-  ```
-  __str__(self):
-  return String
-  ```
-  
-  _Transpose matrix_:
-  ```
-  transpose(self):
-  return F2Matrix   # This will be a transpose version of 'self'
-  ```
-  
-  _Addition operator_ `+`:
-  ```
-  __add__(self, other):
-  return self + other
-  ```
-  
-  _Addition operator_ `+=`:
-  ```
-  __iadd__(self, other):
-  return self + other
-  ```
-  
-  _Multiplication operator_ `*`:
-  ```
-  __mul__(self, other):
-  return self * other
-  ```
-  
-  _Multiplication operator_ `*=`:
-  ```
-  __imul__(self, other):
-  return self * other
-  ```
-  
-  _Power operator_ `**`:
-  ```
-  __pow__(self, power):
-  return self ** power
-  ```
+Matrices and [polynomials](https://github.com/jonbenronron/F2Polynomials) over field [Z/2Z](https://en.wikipedia.org/wiki/GF(2)).
+Documentation for files will be found [here](https://github.com/jonbenronron/F2Matrices/wiki/Documentation).
  
- ### Functions:
- 
- _Dot product of given vectors_:
- ```
- dotProduct(v, u):
- return F2Polynomial
- ```
- 
- ### Example:
+ ### Examples:
   
  _Example 1_
   
@@ -175,12 +100,23 @@ f2polynomial.py
  ```
 ## State
 - [x] `dotProduct`
+
 - [x] `F2Matrix`
   - [x] `__init__`
   - [x] `__str__`
   - [x] `__add__`
   - [x] `__iadd__`
   - [x] `transpose`
+  - [x] `__mul__`
+  - [x] `__imul__`
+  - [x] `__pow__`
+  
+- [x] `F2Polynomial`
+  - [x] `__init__`
+  - [x] `__str__`
+  - [x] `degree`
+  - [x] `__add__`
+  - [x] `__iadd__`
   - [x] `__mul__`
   - [x] `__imul__`
   - [x] `__pow__`
