@@ -2,7 +2,7 @@ from f2polynomial import F2Polynomial
 from f2matrices import F2Matrix
 
 """
-Function for finding a pivot element of a matrix
+Function for finding a pivot element from the matrix
 """
 
 
