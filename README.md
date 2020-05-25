@@ -120,8 +120,9 @@ Documentation for files will be found [here](https://github.com/jonbenronron/F2M
   - [x] `__mul__`
   - [x] `__imul__`
   - [x] `__pow__`
+  - [x] `changeColumns`
+  - [x] `changeRows`
+  - [x] `addColumns`
   
 - [x] `findPivot`
-- [x] `changeColumns`
-- [x] `addColumns`
 - [ ] `smithNormalForm`
