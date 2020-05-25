@@ -92,3 +92,43 @@ class F2Polynomial(Polynomial):
                 maxDeg = degree
 
         return maxDeg + 1
+
+    """
+    Methods for addition operation
+    """
+
+    def __add__(self, other):
+        newCoef = [int(self.coef[i]) + int(other.coef[i])
+                   for i in range(max(len(self.coef), len(other.coef)))]
+
+        return F2Polynomial(newCoef)
+
+    def __iadd__(self, other):
+        return self + other
+
+    """
+    Methods for multiplication operation
+    """
+
+    def __mul__(self, other):
+        newCoef = [0 for i in range(len(self.coef) + len(other.coef))]
+
+        for index1, coefficient1 in enumerate(self.coef):
+            for index2, coefficient2 in enumerate(other.coef):
+                newCoef[index1 +
+                        index2] += (int(coefficient1) * int(coefficient2))
+
+        return F2Polynomial(newCoef)
+
+    def __imul__(self, other):
+        return self * other
+
+    """
+    Methods for power operation
+    """
+
+    def __pow__(self, power):
+        result = self
+        for i in range(power - 1):
+            result *= self
+        return result
