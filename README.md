@@ -22,13 +22,6 @@ f2polynomial.py
   rows=[[F2Polynomial([0])]]
   ```
   
-  _Attributes_:
-  
-  ```
-  rowDimension
-  columnDimension
-  ```
-  
   #### Methods:
   
   _Initialization_:
