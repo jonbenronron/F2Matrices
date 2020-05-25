@@ -45,38 +45,13 @@ class F2Matrix:
     def __init__(self, rows=[[F2Polynomial([0])]]):
         self.rows = rows
 
-    @property
-    def rows(self):
-        return self.rowList
-
-    @rows.setter
-    def rows(self, setRows):
-        for row in setRows:
-            if len(row) != len(rows[0]):
-                raise ValueError("Row dimensions of matrix are not equal!")
-        self.rowList = self.setRows
-
-    @property
-    def rowDimension(self):
-        return self.rowDimensionValue
-
-    @rowDimension.setter
-    def rowDimension(self):
-        self.rowDimensionValue = len(self.rows)
-
-    @property
-    def columnDimension(self):
-        return self.columnDimensionValue
-
-    @columnDimension.setter
-    def rowDimension(self):
-        self.columnDimensionValue = len(self.rows[0])
-
     """
     String format of matrix:
 
-    |      1 + D + D^2,                 D|
-    |1 + D + D^2 + D^3,     1 + D^2 + D^3|
+        example:
+
+        |      1 + D + D^2,                 D|
+        |1 + D + D^2 + D^3,     1 + D^2 + D^3|
      
     """
 
@@ -90,7 +65,7 @@ class F2Matrix:
                 str_len = len(str(polynomial)) if str_len < len(
                     str(polynomial)) else str_len
 
-        # Build the string from the matrix
+        # Build a string from the matrix
         s = ""
         for index, row in enumerate(self.rows):
             s += "|"
@@ -112,7 +87,15 @@ class F2Matrix:
     """
 
     def __add__(self, other):
+
+        # Make sure the dimensions of matrices are equal
+        # If not, raise an type error and return an empty matrix
         if len(self.rows) == len(other.rows) and len(self.rows[0]) == len(self.rows[0]):
+
+            # Iterate over rows of both matrices and sum up the corresponding polynomial elements:
+            #
+            #   p_(i,j) + q_(i,j) = r_(i,j)
+            #
             newRows = []
             for rowIndex, row in enumerate(self.rows):
                 newRow = []
@@ -133,19 +116,32 @@ class F2Matrix:
     """
 
     def transpose(self):
-        newMatrix = [[self.rows[j][i]
-                      for j in range(len(self.rows))] for i in range(len(self.rows[0]))]
-        return F2Matrix(newMatrix)
+        # Transposed matrix will have columns as rows and rows as columns from original matrix
+        #
+        #   Original:           Transposed:
+        #
+        #   |a, b|      =       |a, c|^T
+        #   |c, d|              |b, d|
+        #
+        transposedMatrix = [[self.rows[j][i]
+                             for j in range(len(self.rows))] for i in range(len(self.rows[0]))]
+        return F2Matrix(transposedMatrix)
 
     """
     Methods for multiplication operation
     """
 
     def __mul__(self, other):
-
+        # Make sure that the row dimension of right matrix A
+        # and the column dimension of left matrix B
+        # are equal when the product is
+        #
+        #   A * B = C
+        #
+        # If not, raise an type error and return an empty matrix
         if len(self.rows[0]) == len(other.rows):
-            newMatrix = F2Matrix(
-                [[dotProduct(row, column) for column in other.transpose().rows] for row in self.rows])
+            # Return a matrix C where elements of C are dot products of
+            # rows of matrix A with columns of matrix B
             return F2Matrix([[dotProduct(row, column) for column in other.transpose().rows] for row in self.rows])
         else:
             raise TypeError(
