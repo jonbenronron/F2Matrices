@@ -92,12 +92,10 @@ f2polynomial.py
  _Example 1_
   
  ```
- import f2polynomial as f2p
-  
- a = f2p.F2Polynomial([1, 1, 1, 0])
- b = f2p.F2Polynomial([0, 1, 0, 0])
- c = f2p.F2Polynomial([1, 1, 1, 1])
- d = f2p.F2Polynomial([1, 0, 1, 1])
+ a = F2Polynomial([1, 1, 1, 0])
+ b = F2Polynomial([0, 1, 0, 0])
+ c = F2Polynomial([1, 1, 1, 1])
+ d = F2Polynomial([1, 0, 1, 1])
 
  f = F2Matrix([[a, b],
                [c, d]])
@@ -126,10 +124,10 @@ f2polynomial.py
  _Example 2_
   
  ```
- a = f2p.F2Polynomial([1, 0, 0, 0])
- b = f2p.F2Polynomial([1, 1, 0, 0])
- c = f2p.F2Polynomial([1, 1, 1, 0])
- d = f2p.F2Polynomial([1, 1, 1, 1])
+ a = F2Polynomial([1, 0, 0, 0])
+ b = F2Polynomial([1, 1, 0, 0])
+ c = F2Polynomial([1, 1, 1, 0])
+ d = F2Polynomial([1, 1, 1, 1])
 
  f = F2Matrix([[a, b],
                [c, d]])
@@ -159,10 +157,10 @@ f2polynomial.py
   _Example 3_
   
  ```
- a = f2p.F2Polynomial([1, 0, 0, 0])
- b = f2p.F2Polynomial([1, 1, 0, 0])
- c = f2p.F2Polynomial([1, 1, 1, 0])
- d = f2p.F2Polynomial([1, 1, 1, 1])
+ a = F2Polynomial([1, 0, 0, 0])
+ b = F2Polynomial([1, 1, 0, 0])
+ c = F2Polynomial([1, 1, 1, 0])
+ d = F2Polynomial([1, 1, 1, 1])
 
  f = F2Matrix([[a, b],
                [c, d]])
