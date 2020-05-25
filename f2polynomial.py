@@ -94,3 +94,16 @@ class F2Polynomial(Polynomial):
         for i in range(power - 1):
             result *= self
         return result
+
+    """
+    Method for evaluating
+    """
+
+    def evaluate(self, value):
+        listOfValues = []
+        for index, variable in enumerate(self.coef):
+            if not index:
+                listOfValues.append(self.coef[index])
+            else:
+                listOfValues.append(variable ** index)
+        return sum(listOfValues) % 2

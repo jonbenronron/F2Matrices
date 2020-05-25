@@ -52,7 +52,7 @@ class F2Matrix:
 
         |      1 + D + D^2,                 D|
         |1 + D + D^2 + D^3,     1 + D^2 + D^3|
-     
+
     """
 
     def __str__(self):
@@ -160,3 +160,37 @@ class F2Matrix:
         for i in range(power - 1):
             result *= self
         return result
+
+    """
+    Method for changing place of two columns
+    """
+
+    def changeColumns(self, changeColumnIndex, withColumnIndex):
+
+        # Iterate over rows of matrix
+        for row in self.rows:
+
+            # At every row, change places of elements with given indexes
+            row[changeColumnIndex], row[withColumnIndex] = row[withColumnIndex], row[changeColumnIndex]
+
+    """
+    Method for changing place of two rows
+    """
+
+    def changeRows(self, changeRowIndex, withRowIndex):
+
+        # Change the rows according to given indexes
+        self.rows[changeRowIndex], self.rows[withRowIndex] = self.rows[withRowIndex], self.rows[changeRowIndex]
+
+    """
+    Method for adding one column with another
+    """
+
+    def addColumns(self, addColumnIndex, toColumnIndex):
+
+        # Iterate over rows of matrix
+        for row in self.rows:
+
+            # At every row, add element from another column
+            # with element of another column
+            row[toColumnIndex] += row[addColumnIndex]
