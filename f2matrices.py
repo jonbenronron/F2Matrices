@@ -1,30 +1,34 @@
 import sys
 import f2polynomial as f2p
+from f2polynomial import F2Polynomial
 
 """
 Function for dot product of two given vectors
 """
 
 
-def dotProduct(v, u):
-    if len(v) == len(u):
+def dotProduct(vector, wector):
+    if len(vector) == len(wector):
         try:
-            newVector = []
-            for index, polynom in enumerate(v):
-                newVector.append(f2p.polyMul(polynom, u[index]))
+            # Multiply corresponding elements of given vectors
+            productVector = list(map(lambda polynomial,
+                                     qolynomial: polynomial * qolynomial, vector, wector))
+            # Find and measure the length of the polynomial with longest list of coefficients
+            length = 0
+            for polynomial in productVector:
+                length = len(polynomial.coef) if length < len(
+                    polynomial.coef) else length
+            # Initialize a zero polynomial with given length
+            sumOfProductValues = F2Polynomial([0] * length)
+            # Iterate and sum up the elements of vector we got from multiplication
+            for productPolynomial in productVector:
+                sumOfProductValues += productPolynomial
+            return sumOfProductValues
         except:
             print("Unexpected error:", sys.exc_info()[0])
-        length = 0
-        for p in newVector:
-            length = len(p.coef) if length < len(p.coef) else length
-        sumOfProductValues = f2p.F2Polynomial([0] * (length))
-        for productPolynom in newVector:
-            sumOfProductValues = f2p.polyAdd(
-                sumOfProductValues, productPolynom)
-        return sumOfProductValues
     else:
         raise TypeError("Vectors have different dimensions!")
-        return f2p.F2Polynomial([0])
+        return F2Polynomial([0])
 
 
 """
@@ -38,8 +42,35 @@ class F2Matrix:
     Initialization
     """
 
-    def __init__(self, rows=[]):
+    def __init__(self, rows=[[F2Polynomial([0])]]):
         self.rows = rows
+
+    @property
+    def rows(self):
+        return self.rowList
+
+    @rows.setter
+    def rows(self, setRows):
+        for row in setRows:
+            if len(row) != len(rows[0]):
+                raise ValueError("Row dimensions of matrix are not equal!")
+        self.rowList = self.setRows
+
+    @property
+    def rowDimension(self):
+        return self.rowDimensionValue
+
+    @rowDimension.setter
+    def rowDimension(self):
+        self.rowDimensionValue = len(self.rows)
+
+    @property
+    def columnDimension(self):
+        return self.columnDimensionValue
+
+    @columnDimension.setter
+    def rowDimension(self):
+        self.columnDimensionValue = len(self.rows[0])
 
     """
     String format of matrix:
@@ -85,14 +116,14 @@ class F2Matrix:
             newRows = []
             for rowIndex, row in enumerate(self.rows):
                 newRow = []
-                for polynomIndex, polynom in enumerate(row):
-                    newRow.append(f2p.polyAdd(
-                        polynom, other.rows[rowIndex][polynomIndex]))
+                for polynomialIndex, polynomial in enumerate(row):
+                    newRow.append(
+                        polynomial + other.rows[rowIndex][polynomialIndex])
                 newRows.append(newRow)
             return F2Matrix(newRows)
         else:
             raise TypeError("Matrices have different size!")
-            return F2Matrix([[f2p.F2Polynomial([0])]])
+            return F2Matrix([[F2Polynomial([0])]])
 
     def __iadd__(self, other):
         return self + other
@@ -119,7 +150,7 @@ class F2Matrix:
         else:
             raise TypeError(
                 "Row and column dimensions of matrices don't match!")
-            return F2Matrix([[f2p.F2Polynomial([0])]])
+            return F2Matrix([[F2Polynomial([0])]])
 
     def __imul__(self, other):
         return self * other
