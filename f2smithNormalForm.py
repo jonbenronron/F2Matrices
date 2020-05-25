@@ -41,9 +41,45 @@ def smithNormalForm(matrix):
             matrix.changeColumns(pivotIndex, 0)
             pivotIndex = 0
 
+        # Try to reduce other elements in the column that differ from zero
+        # with adding the row with the pivot element to others
+        for row in matrix.rows:
+
+            #   | [pivot], *, *, ..., * |
+            #   | [p_2,1], *, *, ..., * |
+            #   | [p_3,1], *, *, ..., * |
+            #   | [.....], ........., ..|
+            #   | [p_n,1], *, *, ..., * |
+            #
+            polynomial = row[pivotIndex]
+
+            # f(0) = 1 + 0 + 0^2 + 0^3 + ... + 0^n
+            valueAtZero, firstTerm = polynomial.evaluate(0), polynomial.coef[0]
+
+            # f(0) = 1 + 0 + 0^2 + 0^3 + ... + 0^n
+            valueAtZero, firstTerm = polynomial.evaluate(0), polynomial.coef[0]
+
+            # f(0) = 1     and f(x) = 1 + D + ... + D^n
+            if valueAtZero and firstTerm:
+                pass
+
+            # f(0) = 1       and f(x) = 0 + D + ... + D^n
+            elif valueAtZero and not firstTerm:
+                pass
+
+            else:
+                pass
+
         # Try to reduce other elements in the row that differ from zero
         # with adding the column with the pivot element to others
         for index, polynomial in enumerate(row):
+
+            #   | [pivot], [p_1,2], [p_1,3], [.....], [p_1,m] |
+            #   |    *,       *,       *,     .....,     *    |
+            #   |    *,       *,       *,     .....,     *    |
+            #   |    *, ...........................,  ....... |
+            #   |    *,       *,       *,     .....,     *    |
+            #
 
             # f(0) = 1 + 0 + 0^2 + 0^3 + ... + 0^n
             valueAtZero, firstTerm = polynomial.evaluate(0), polynomial.coef[0]
