@@ -2,7 +2,7 @@
 
 ## Description
 
-Matrices and [polynomials](https://github.com/jonbenronron/F2Polynomials) over field [Z/2Z](https://en.wikipedia.org/wiki/GF(2)).
+[Matrices](https://en.wikipedia.org/wiki/Matrix_(mathematics)) and [polynomials](https://numpy.org/devdocs/reference/routines.polynomials.polynomial.html) over field [Z/2Z](https://en.wikipedia.org/wiki/GF(2)).
 Documentation for files will be found [here](https://github.com/jonbenronron/F2Matrices/wiki/Documentation).
  
  ### Examples:
@@ -99,8 +99,17 @@ Documentation for files will be found [here](https://github.com/jonbenronron/F2M
  |        D + D^3 + D^5, D^2 + D^3 + D^4 + D^6|
  ```
 ## State
-- [x] `dotProduct`
+- [x] `F2Polynomial`
+  - [x] `__init__`
+  - [x] `__str__`
+  - [x] `degree`
+  - [x] `__add__`
+  - [x] `__iadd__`
+  - [x] `__mul__`
+  - [x] `__imul__`
+  - [x] `__pow__`
 
+- [x] `dotProduct`
 - [x] `F2Matrix`
   - [x] `__init__`
   - [x] `__str__`
@@ -111,12 +120,7 @@ Documentation for files will be found [here](https://github.com/jonbenronron/F2M
   - [x] `__imul__`
   - [x] `__pow__`
   
-- [x] `F2Polynomial`
-  - [x] `__init__`
-  - [x] `__str__`
-  - [x] `degree`
-  - [x] `__add__`
-  - [x] `__iadd__`
-  - [x] `__mul__`
-  - [x] `__imul__`
-  - [x] `__pow__`
+- [x] `findPivot`
+- [x] `changeColumns`
+- [x] `addColumns`
+- [ ] `smithNormalForm`
