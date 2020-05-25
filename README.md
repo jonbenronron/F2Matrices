@@ -19,7 +19,14 @@ f2polynomial.py
   
   ```
   self
-  rows=[]
+  rows=[[F2Polynomial([0])]]
+  ```
+  
+  _Attributes_:
+  
+  ```
+  rowDimension
+  columnDimension
   ```
   
   #### Methods:
